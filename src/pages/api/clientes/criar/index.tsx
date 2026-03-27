@@ -9,8 +9,8 @@ export default function CadastrarClientes() {
     const regras = z.object({
         nome: z.string().min(1, DEFAULT_MESSAGE_RULE),
         email: z.email(DEFAULT_MESSAGE_RULE),
-        cpfcnpj: z.string.min(1, DEFAULT_MESSAGE_RULE).max(14, "Limite de 14 caracteres"),
-        sexo: z.string().min(1, DEFAULT_MESSAGE_RULE).max(1)
+        cpfcnpj: z.string().min(1, DEFAULT_MESSAGE_RULE).max(14, "Limite de 14 caracteres"),
+        sexo: z.string().min(1, DEFAULT_MESSAGE_RULE).max(1),
         cep: z.string().min(1, DEFAULT_MESSAGE_RULE).max(9, "Cep inválido"),
         rua: z.string().min(1, DEFAULT_MESSAGE_RULE),
         bairro: z.string().min(1, DEFAULT_MESSAGE_RULE),
@@ -26,12 +26,21 @@ export default function CadastrarClientes() {
         resolver: zodResolver(regras)
     })
 
+
+    const {
+        handlesubmit
+register,
+    }
+
     function onSubmit(data: FormType){
-        
+
     }
     return (
-        <div>
-            <h1>Criar Clientes</h1>
-        </div>
+        <>
+            <h1>Cadastrar Cliente</h1>
+            <div>
+                <form onSubmit={handleSubmit(onSubmit)} noValidate className='grid-grid-cold-12 max-w-64 border-red-500-h'></form>
+            </div>
+        </>
     )
 }
